@@ -111,23 +111,6 @@ def get_df_from_yaml(yaml_name:str):
 
     return pf_merge_df.dropna()
 
-def buy_portfolio(portfolio, df):
-    assets = 100000000
-    start = '2020-01-03'
-
-    ratios = portfolio.Ratio
-    assert sum(ratios)<=100, 'Can\'t be sum of ratio > 100' 
-    
-    ratios = assets * ratios /100
-    s_qty = (ratios.to_numpy()/df.loc[df.index == start][portfolio.Name].to_numpy())[0]
-    s_qty = [int(q) for q in s_qty]
-
-    ret_df = df.drop('USD/KRW',axis=1)*s_qty
-    ret_df = ret_df.sum(axis=1)
-
-    ret_df = ret_df.iloc[::-1]
-    return ret_df
-
 if __name__ == '__main__':
     ret = get_df_from_yaml('AW4_11')
     print(len(ret))
