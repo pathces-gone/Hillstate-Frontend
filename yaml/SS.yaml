@@ -1,0 +1,6 @@
+SS:
+  'Kospi':
+    - etf: '005930'
+      source: 'NAVER'
+      comment: 'Samsung elec.'
+      ratio: 100

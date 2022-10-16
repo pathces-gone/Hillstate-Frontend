@@ -62,7 +62,7 @@ def get_etf_from_yaml(yaml_name):
     return items
 
 def get_df_from_yaml(yaml_name:str):
-    portfolio = get_etf_from_yaml('AW4_11')
+    portfolio = get_etf_from_yaml(yaml_name=yaml_name)
     
     dt = pd.date_range(end=datetime.datetime.today().strftime('%Y-%m-%d'), periods=PERIODS, freq='D')
     pf_merge_df = pd.DataFrame(dt,columns=['Date']).iloc[::-1].set_index('Date')
@@ -112,8 +112,6 @@ def get_df_from_yaml(yaml_name:str):
     return pf_merge_df.dropna()
 
 if __name__ == '__main__':
-    ret = get_df_from_yaml('AW4_11')
-    print(len(ret))
-    print(ret.head(10))
-
-    print(ret.tail(10))
+    yaml_name = 'AW4_11'
+    portfolio = get_etf_from_yaml(yaml_name)
+    ret = get_df_from_yaml(yaml_name)
